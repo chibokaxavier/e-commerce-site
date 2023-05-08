@@ -22,18 +22,18 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     increment: (state) => {
-      state.value += 1
+      state.amount += 1
     },
     decrement: (state) => {
-      state.value -= 1
+      state.amount -= 1
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
+      state.amount += action.payload
     },
   },
 })
 
-export const selectvalue = (state: RootState) => state.cart.amount
+export const selectvalue = (state: RootState) => state.cart
 
 // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = cartSlice.actions
