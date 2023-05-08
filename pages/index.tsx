@@ -9,7 +9,7 @@ export default function Home() {
   const { amount } = useSelector(selectvalue);
   const dispatch = useDispatch();
   return (
-    <div className="">
+    <div className=" ">
       <Navbar />
       <CartContainer />
     </div>

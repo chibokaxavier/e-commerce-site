@@ -26,11 +26,26 @@ const CartContainer = () => {
   }
 
   return (
-    <div>
-      {cartItems.map((item: Cart) => {
-        return <CartItem key={item.id} item={item} />;
-      })}
-    </div>
+    <section className="mx-4">
+      <h2 className="text-3xl font-light flex text-center justify-center pt-4">
+        YOUR BAG
+      </h2>
+      <div className="">
+        {cartItems.map((item: Cart) => {
+          return <CartItem key={item.id} item={item} />;
+        })}
+      </div>
+      <footer className="py-4">
+        <hr />
+        <h4 className="pt-6 text-xl font-light flex justify-between  items-center">
+          TOTAL <span className="ml-4">${total}</span>
+        </h4>
+        <div className="flex justify-center items-center">
+        <button className="font-light uppercase w-[160px] p-2 tracking-widest bg-gray-500 hover:bg-gray-200 transition "> Clear Cart</button>
+        </div>
+        
+      </footer>
+    </section>
   );
 };
 

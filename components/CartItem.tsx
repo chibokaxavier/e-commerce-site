@@ -13,7 +13,7 @@ export interface Cart {
 const CartItem = ({item}) => {
     const {amount,id,title,category,price,img,desc} =item
   return (
-    <div>{title}</div>
+    <div className='pt-4'>{title}</div>
   )
 }
 
