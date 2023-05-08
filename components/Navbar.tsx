@@ -1,6 +1,9 @@
+import { RootState } from "@/app/store";
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+    const amount = useSelector((state:RootState)=> state.cart.amount)
   return (
     <div className="bg-gray-200 flex justify-between">
       <div className="flex justify-start items-center p-4">
@@ -24,7 +27,7 @@ const Navbar = () => {
         </svg>
         <div className="bg-black text-white rounded-full absolute top-3 right-3 h-6 w-6">
           <span className="flex items-center justify-center">
-            0
+            {amount}
           </span>
         </div>
       </div>
