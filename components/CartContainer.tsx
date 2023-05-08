@@ -1,6 +1,7 @@
 import { RootState } from "@/app/store";
+import { clearCart } from "@/slices/cartSlice";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem";
 
 export interface Cart {
@@ -16,6 +17,9 @@ const CartContainer = () => {
   const { cartItems, amount, total } = useSelector(
     (state: RootState) => state.cart
   );
+
+const dispatch = useDispatch()
+
   if (amount < 1) {
     return (
       <div className="flex flex-col justify-center items-center my-[200px]">
@@ -28,7 +32,7 @@ const CartContainer = () => {
   return (
     <section className="mx-4">
       <h2 className="text-3xl font-light flex text-center justify-center pt-4">
-        YOUR BAG
+        YOUR BASKET
       </h2>
       <div className="">
         {cartItems.map((item: Cart) => {
@@ -41,9 +45,14 @@ const CartContainer = () => {
           TOTAL <span className="ml-4">${total}</span>
         </h4>
         <div className="flex justify-center items-center">
-        <button className="font-light uppercase w-[160px] p-2 tracking-widest bg-gray-500 hover:bg-gray-200 transition "> Clear Cart</button>
+          <button
+            className="font-light uppercase w-[160px] p-2 tracking-widest bg-gray-500 hover:bg-gray-200 transition "
+            onClick={() =>{dispatch(clearCart())}}
+          >
+            {" "}
+            Clear Cart
+          </button>
         </div>
-        
       </footer>
     </section>
   );

@@ -1,5 +1,6 @@
+import { removeItem,increase, decrease } from "@/slices/cartSlice";
 import React from "react";
-
+import { useDispatch } from "react-redux";
 export interface Cart {
   id: number;
   title: string;
@@ -10,6 +11,7 @@ export interface Cart {
 }
 
 const CartItem = ({ item }) => {
+    const dispatch = useDispatch()
   const { amount, id, title, category, price, img, desc } = item;
   return (
     <div className=" pt-4 flex justify-between">
@@ -20,20 +22,20 @@ const CartItem = ({ item }) => {
         <div className="ml-[80px]">
           <span className="capitalize">{title}</span>
           <p className="text-gray-500">${price}</p>
-          <button className="bg-red-600  p-2 rounded-md text-white uppercase ">
+          <button className="bg-red-600  p-2 rounded-md text-white uppercase " onClick={()=>{dispatch(removeItem(id))}}>
             Remove
           </button>
         </div>
       </div>
 
       <div className="flex flex-col justify-center items-center  ">
-        <svg
+        <svg onClick={()=>{dispatch(increase(id))}}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-6 h-6 cursor-pointer"
         >
           <path
             stroke-linecap="round"
@@ -42,13 +44,18 @@ const CartItem = ({ item }) => {
           />
         </svg>
         <span>{amount}</span>
-        <svg
+        <svg onClick={()=>{
+            if (amount ===1 ) {
+               dispatch(removeItem(id)) 
+               return;
+            }
+            dispatch(decrease(id))}}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className="w-6 h-6 cursor-pointer"
         >
           <path
             stroke-linecap="round"
