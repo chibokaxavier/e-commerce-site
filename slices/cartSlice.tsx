@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/app/store";
 import cartItems from "@/cartItems";
+import { Console } from "console";
 
 export interface CartState {
   cartItems: any;
@@ -12,7 +13,7 @@ export interface CartState {
 
 const initialState: CartState = {
   cartItems: cartItems,
-  amount: 2,
+  amount:1,
   total: 0,
   isLoading: true,
 };
@@ -44,13 +45,25 @@ export const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
     },
+    calculateTotal:(state)=>{
+      let amount =0 
+      let total=0
+      state.cartItems.forEach(item => {
+        amount += item.amount
+        total += item.amount * item.price
+      });
+      console.log(amount)
+state.amount = amount 
+state.total = total
+
+    }
   },
 });
 
 export const selectvalue = (state: RootState) => state.cart;
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, removeItem, increase,decrease, clearCart } =
+export const { increment, decrement, removeItem, increase,decrease,calculateTotal, clearCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

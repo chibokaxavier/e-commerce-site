@@ -18,7 +18,7 @@ const CartContainer = () => {
     (state: RootState) => state.cart
   );
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   if (amount < 1) {
     return (
@@ -47,7 +47,9 @@ const dispatch = useDispatch()
         <div className="flex justify-center items-center">
           <button
             className="font-light uppercase w-[160px] p-2 tracking-widest bg-gray-500 hover:bg-gray-200 transition "
-            onClick={() =>{dispatch(clearCart())}}
+            onClick={() => {
+              dispatch(clearCart());
+            }}
           >
             {" "}
             Clear Cart
