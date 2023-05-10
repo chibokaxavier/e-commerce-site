@@ -63,7 +63,7 @@ const CartContainer = () => {
         <footer className="py-4">
           <hr />
           <h4 className="pt-6 text-xl font-light flex justify-between  items-center">
-            TOTAL <span className="ml-4">${total}</span>
+            TOTAL <span className="ml-4">${total.toFixed(2)}</span>
           </h4>
           <div className="flex justify-center items-center">
             <button
