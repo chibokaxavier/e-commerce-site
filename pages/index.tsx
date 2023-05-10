@@ -10,6 +10,8 @@ import { RootState } from "@/app/store";
 import Navbar from "@/components/Navbar";
 import CartContainer from "@/components/CartContainer";
 import { useEffect } from "react";
+import { Modal } from "@mui/material";
+import BasicModal from "@/components/Modal";
 
 export default function Home() {
   const { amount, cartItems } = useSelector(selectvalue);
@@ -22,6 +24,7 @@ export default function Home() {
     <div className=" ">
       <Navbar />
       <CartContainer />
+      
     </div>
   );
 }

@@ -13,7 +13,7 @@ export interface CartState {
 
 const initialState: CartState = {
   cartItems: cartItems,
-  amount:1,
+  amount:0,
   total: 0,
   isLoading: true,
 };
